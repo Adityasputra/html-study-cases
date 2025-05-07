@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A simple profile of a developer." />
+    <meta name="keywords" content="HTML, Profile" />
+    <meta name="author" content="Aditya Saputra" />
+    <title>My Profile</title>
+  </head>
+  <body>
+    <header>
+      <h1>Aditya Saputra</h1>
+      <nav>
+        <ul>
+          <li><a href="#about">About Me</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="about">
+        <h2>About Me</h2>
+        <figure>
+          <img src="./image/Avatar.jpeg" alt="Aditya Saputra" width="200" />
+          <figcaption>Aditya Saputra</figcaption>
+        </figure>
+        <p>
+          I am an aspiring developer with a passion for learning web development
+          and AI.
+        </p>
+        <h3>My Social Media</h3>
+        <figure>
+          <a
+            href="https://www.instagram.com/adityasputra_cv/"
+            aria-label="Instagram Aditya Saputra"
+          >
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/960px-Instagram_logo_2022.svg.png"
+              alt="Instagram logo"
+              width="50"
+            />
+          </a>
+
+          <figcaption>Instagram</figcaption>
+        </figure>
+      </section>
+
+      <section id="skills">
+        <h2>Skills</h2>
+        <ul>
+          <li>HTML & CSS</li>
+          <li>JavaScript</li>
+          <li>React.js</li>
+          <li>Node.js</li>
+        </ul>
+      </section>
+
+      <section id="contact">
+        <h2>Contact Me</h2>
+        <form action="#" method="POST">
+          <label for="name">Name:</label><br />
+          <input type="text" id="name" name="name" required /><br />
+
+          <label for="email">Email:</label><br />
+          <input type="email" id="email" name="email" required /><br />
+
+          <label for="message">Message:</label><br />
+          <textarea id="message" name="message" rows="4" required></textarea
+          ><br />
+
+          <button type="submit">Send</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Adityasputra</p>
+    </footer>
+  </body>
+</html>
