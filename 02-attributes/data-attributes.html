@@ -1,1 +1,36 @@
 <!-- Practice: Data attributes for custom information storage -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data attributes</title>
+    <link rel="stylesheet" href="../style/style.css" />
+  </head>
+  <body>
+    <main>
+      <article
+        id="electric-guitar"
+        data-category="musical-instrument"
+        data-brand="Fender"
+        data-model="Stratocaster"
+        data-price="1200"
+        data-columns="3"
+      ></article>
+      <article
+        id="drum"
+        data-category="musical-instrument"
+        data-brand="Yamaha"
+        data-model="Stage Custom"
+        data-price="700"
+        data-columns="4"
+      ></article>
+
+      <div class="callout">...</div>
+      <div class="callout" data-variant="note">...</div>
+      <div class="callout" data-variant="warning">...</div>
+    </main>
+
+    <script src="../script/script.js"></script>
+  </body>
+</html>
