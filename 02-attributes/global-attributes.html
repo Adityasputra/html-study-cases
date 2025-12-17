@@ -1,1 +1,105 @@
 <!-- Practice: Global attributes - id, class, title, lang -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Global Attributes</title>
+  </head>
+  <body>
+    <!-- 1. id and class -->
+    <div id="main-container" class="container primary-section">
+      <h1 class="heading main-title">Global Attributes Demo</h1>
+    </div>
+
+    <!-- 2. title attribute (tooltip) -->
+    <p title="This is a tooltip that appears on hover">
+      Hover over this text to see the title attribute in action.
+    </p>
+
+    <!-- 3. lang attribute -->
+    <p lang="id">Ini adalah teks dalam Bahasa Indonesia.</p>
+    <p lang="es">Este es un texto en español.</p>
+
+    <!-- 4. style attribute (inline CSS) -->
+    <p style="color: blue; font-weight: bold; font-size: 18px;">
+      This paragraph has inline styling.
+    </p>
+
+    <!-- 5. data-* attributes (custom data) -->
+    <article
+      id="electric-guitar"
+      data-category="music"
+      data-brand="Fender"
+      data-model="Stratocaster"
+      data-price="15000000"
+    >
+      Electric Guitar - Fender Stratocaster
+    </article>
+
+    <!-- 6. contenteditable -->
+    <div contenteditable="true" style="border: 1px solid #ccc; padding: 10px;">
+      This content is editable! Try clicking and typing here.
+    </div>
+
+    <!-- 7. draggable -->
+    <p draggable="true" style="cursor: move; background: lightblue; padding: 10px;">
+      This paragraph is draggable. Try to drag it!
+    </p>
+
+    <!-- 8. hidden attribute -->
+    <p>This paragraph is visible.</p>
+    <p hidden>This paragraph is hidden using the hidden attribute.</p>
+
+    <!-- 9. tabindex (keyboard navigation) -->
+    <div tabindex="0" style="border: 1px solid green; padding: 10px;">
+      This div is focusable with Tab key (tabindex="0")
+    </div>
+    <div tabindex="-1" style="border: 1px solid red; padding: 10px;">
+      This div can be focused programmatically (tabindex="-1")
+    </div>
+
+    <!-- 10. accesskey (keyboard shortcut) -->
+    <div>
+      <p>If you need to relax, press the <b>S</b>tress reliever!</p>
+      <button accesskey="s">Stress reliever (Alt+S)</button>
+    </div>
+
+    <!-- 11. dir (text direction) -->
+    <p dir="ltr">This text flows from Left to Right (LTR)</p>
+    <p dir="rtl">هذا النص يتدفق من اليمين إلى اليسار (RTL)</p>
+
+    <!-- 12. spellcheck -->
+    <textarea spellcheck="true" placeholder="Type here with spell checking enabled"></textarea>
+    <textarea spellcheck="false" placeholder="Type here with spell checking disabled"></textarea>
+
+    <!-- 13. translate -->
+    <p translate="yes">This text should be translated by translation tools.</p>
+    <p translate="no">This text should NOT be translated (e.g., brand name).</p>
+
+    <!-- 14. role and aria-* (accessibility) -->
+    <button role="button" aria-label="Close dialog" aria-pressed="false">
+      ✕
+    </button>
+    <div role="alert" aria-live="polite">
+      This is an alert message for screen readers.
+    </div>
+
+    <!-- 15. Multiple global attributes combined -->
+    <div
+      id="product-card"
+      class="card featured"
+      title="Premium Product"
+      data-product-id="12345"
+      data-price="299.99"
+      data-stock="in-stock"
+      lang="en"
+      tabindex="0"
+      role="article"
+      aria-label="Product card"
+    >
+      <h3>Premium Product</h3>
+      <p>This element uses multiple global attributes together.</p>
+    </div>
+  </body>
+</html>
