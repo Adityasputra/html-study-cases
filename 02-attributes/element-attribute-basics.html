@@ -1,1 +1,297 @@
 <!-- Practice: What attributes are and how they relate to elements -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Element Attribute Basics</title>
+    <link rel="stylesheet" href="../style/style.css" />
+  </head>
+  <body>
+    <!-- SECTION 1: Basic Syntax -->
+    <section>
+      <h2>1. Basic Attribute Syntax</h2>
+      <div class="syntax">
+        &lt;element attribute="value"&gt;Content&lt;/element&gt;
+      </div>
+      <p><strong>Components:</strong></p>
+      <ul>
+        <li><strong>attribute name</strong> - lowercase, no spaces</li>
+        <li><strong>=</strong> - equals sign (no spaces)</li>
+        <li><strong>"value"</strong> - attribute value in quotes</li>
+      </ul>
+    </section>
+
+    <!-- SECTION 2: Attributes With Values -->
+    <section>
+      <h2>2. Attributes With Values</h2>
+
+      <h3>a) Link with href attribute</h3>
+      <div class="example">
+        <a href="https://www.google.com">Visit Google</a>
+        <p>
+          <code
+            >&lt;a href="https://www.google.com"&gt;Visit Google&lt;/a&gt;</code
+          >
+        </p>
+      </div>
+
+      <h3>b) Image with src and alt attributes</h3>
+      <div class="example">
+        <img src="/resources/pokemon.png" alt="Placeholder image" width="150" />
+        <p>
+          <code>&lt;img src="image.jpg" alt="Description" width="150"&gt;</code>
+        </p>
+      </div>
+
+      <h3>c) Input with type and placeholder</h3>
+      <div class="example">
+        <input type="text" placeholder="Enter your name" />
+        <p>
+          <code>&lt;input type="text" placeholder="Enter your name"&gt;</code>
+        </p>
+      </div>
+
+      <h3>d) Input with different types</h3>
+      <div class="example">
+        <input type="email" placeholder="Email" /><br /><br />
+        <input type="password" placeholder="Password" /><br /><br />
+        <input type="number" placeholder="Age" min="0" max="120" /><br /><br />
+        <input type="date" /><br /><br />
+        <input type="color" value="#ff0000" />
+      </div>
+    </section>
+
+    <!-- SECTION 3: Boolean Attributes -->
+    <section>
+      <h2>3. Boolean Attributes (No Value Needed)</h2>
+      <p>
+        Some attributes don't need values - their presence means "true", absence
+        means "false".
+      </p>
+
+      <div class="example">
+        <h4>Examples:</h4>
+        <input type="checkbox" checked /> Checked by default<br />
+        <input type="text" disabled placeholder="This is disabled" /><br />
+        <input type="text" readonly value="Read-only text" /><br />
+        <input type="text" required placeholder="Required field" /><br />
+        <button autofocus>Auto-focused button</button>
+      </div>
+
+      <div class="syntax">
+        &lt;input type="checkbox" checked&gt;<br />
+        &lt;input type="text" disabled&gt;<br />
+        &lt;input type="text" readonly&gt;<br />
+        &lt;input type="text" required&gt;
+      </div>
+    </section>
+
+    <!-- SECTION 4: Multiple Attributes -->
+    <section>
+      <h2>4. Multiple Attributes on One Element</h2>
+      <p>Elements can have multiple attributes separated by spaces.</p>
+
+      <div class="example">
+        <input
+          type="email"
+          id="user-email"
+          name="email"
+          placeholder="Enter your email"
+          required
+          maxlength="100"
+        />
+      </div>
+
+      <div class="syntax">
+        &lt;input<br />
+        &nbsp;&nbsp;type="email"<br />
+        &nbsp;&nbsp;id="user-email"<br />
+        &nbsp;&nbsp;name="email"<br />
+        &nbsp;&nbsp;placeholder="Enter your email"<br />
+        &nbsp;&nbsp;required<br />
+        &nbsp;&nbsp;maxlength="100"<br />
+        &gt;
+      </div>
+    </section>
+
+    <!-- SECTION 5: Quotes in Attributes -->
+    <section>
+      <h2>5. Attribute Value Quotes</h2>
+
+      <h3>Double quotes (recommended):</h3>
+      <div class="syntax">&lt;a href="page.html"&gt;Link&lt;/a&gt;</div>
+
+      <h3>Single quotes (also valid):</h3>
+      <div class="syntax">&lt;a href='page.html'&gt;Link&lt;/a&gt;</div>
+
+      <h3>No quotes (only for simple values with no spaces):</h3>
+      <div class="syntax">
+        &lt;input type=text&gt;
+        <!-- Valid but not recommended -->
+      </div>
+
+      <h3>When quotes are REQUIRED:</h3>
+      <div class="example">
+        <p>Values with spaces MUST be quoted:</p>
+        <div class="syntax">
+          ✓ &lt;img alt="A beautiful sunset"&gt;<br />
+          ✗ &lt;img alt=A beautiful sunset&gt;
+          <!-- WRONG! -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: Common HTML Element Attributes -->
+    <section>
+      <h2>6. Common Element-Specific Attributes</h2>
+
+      <h3>Links (&lt;a&gt;)</h3>
+      <div class="example">
+        <a href="https://example.com" target="_blank" rel="noopener">
+          Open in new tab
+        </a>
+        <br />
+        <a href="mailto:email@example.com">Send email</a>
+        <br />
+        <a href="tel:+1234567890">Call us</a>
+        <br />
+        <a href="#section1">Jump to section</a>
+      </div>
+
+      <h3>Images (&lt;img&gt;)</h3>
+      <div class="example">
+        <img
+          src="https://via.placeholder.com/100"
+          alt="Sample image"
+          width="100"
+          height="100"
+          loading="lazy"
+          title="Hover to see this title"
+        />
+      </div>
+
+      <h3>Forms (&lt;input&gt;, &lt;textarea&gt;, &lt;select&gt;)</h3>
+      <div class="example">
+        <label for="username">Username:</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value="JohnDoe"
+          maxlength="20"
+        /><br /><br />
+
+        <label for="bio">Bio:</label><br />
+        <textarea id="bio" name="bio" rows="3" cols="30"></textarea><br /><br />
+
+        <label for="country">Country:</label>
+        <select id="country" name="country">
+          <option value="">Choose...</option>
+          <option value="us">United States</option>
+          <option value="uk">United Kingdom</option>
+          <option value="id" selected>Indonesia</option>
+        </select>
+      </div>
+
+      <h3>Buttons (&lt;button&gt;)</h3>
+      <div class="example">
+        <button type="button">Regular Button</button>
+        <button type="submit">Submit Button</button>
+        <button type="reset">Reset Button</button>
+        <button type="button" disabled>Disabled Button</button>
+      </div>
+
+      <h3>Tables</h3>
+      <div class="example">
+        <table border="1" cellpadding="10" cellspacing="0">
+          <tr>
+            <th colspan="2">Header spanning 2 columns</th>
+          </tr>
+          <tr>
+            <td>Cell 1</td>
+            <td rowspan="2">Cell spanning 2 rows</td>
+          </tr>
+          <tr>
+            <td>Cell 2</td>
+          </tr>
+        </table>
+      </div>
+
+      <h3>Media (&lt;audio&gt;, &lt;video&gt;)</h3>
+      <div class="example">
+        <audio controls>
+          <source src="audio.mp3" type="audio/mpeg" />
+          Your browser does not support audio.
+        </audio>
+        <br /><br />
+        <video width="320" height="240" controls poster="thumbnail.jpg">
+          <source src="video.mp4" type="video/mp4" />
+          Your browser does not support video.
+        </video>
+      </div>
+    </section>
+
+    <!-- SECTION 7: How Attributes Affect Elements -->
+    <section>
+      <h2>7. How Attributes Change Element Behavior</h2>
+
+      <div class="example">
+        <h4>Without attributes:</h4>
+        <img src="https://via.placeholder.com/100" />
+        <p>Just an image with no additional information.</p>
+
+        <h4>With attributes:</h4>
+        <img
+          src="https://via.placeholder.com/100"
+          alt="Descriptive text for accessibility"
+          width="100"
+          height="100"
+          loading="lazy"
+          class="profile-pic"
+          title="Profile Picture"
+        />
+        <p>
+          Now it has: description, size, lazy loading, styling class, and
+          tooltip!
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 8: Best Practices -->
+    <section>
+      <h2>8. Best Practices</h2>
+      <ul>
+        <li>✓ Always use lowercase for attribute names</li>
+        <li>✓ Always quote attribute values (prefer double quotes)</li>
+        <li>✓ Use meaningful values (especially for id, class, alt)</li>
+        <li>✓ Add alt attribute to all images for accessibility</li>
+        <li>✓ Use semantic attribute names (name, not n)</li>
+        <li>✗ Don't use spaces in attribute values without quotes</li>
+        <li>✗ Don't duplicate attributes on the same element</li>
+        <li>✗ Don't leave required attributes empty</li>
+      </ul>
+    </section>
+
+    <!-- SECTION 9: Summary -->
+    <section>
+      <h2>9. Summary</h2>
+      <div class="example">
+        <h3>Attribute Structure:</h3>
+        <div class="syntax">
+          &lt;tagname attribute="value"&gt;Content&lt;/tagname&gt;
+        </div>
+
+        <h3>Key Points:</h3>
+        <ul>
+          <li>Attributes go in the opening tag</li>
+          <li>Format: name="value"</li>
+          <li>Multiple attributes are space-separated</li>
+          <li>Some attributes are boolean (no value needed)</li>
+          <li>Different elements have different valid attributes</li>
+          <li>Attributes modify element behavior and appearance</li>
+        </ul>
+      </div>
+    </section>
+  </body>
+</html>
