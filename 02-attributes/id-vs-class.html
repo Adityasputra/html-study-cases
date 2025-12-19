@@ -1,1 +1,587 @@
 <!-- Practice: Difference between id and class usage -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ID vs Class Attributes</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 1000px;
+        margin: 20px auto;
+        padding: 0 20px;
+        line-height: 1.6;
+      }
+
+      .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+
+      .comparison-table th,
+      .comparison-table td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+      }
+
+      .comparison-table th {
+        background-color: #007acc;
+        color: white;
+      }
+
+      .comparison-table tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      .example-box {
+        background: #f5f5f5;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #007acc;
+        border-radius: 4px;
+      }
+
+      .code-block {
+        background: #2d2d2d;
+        color: #f8f8f2;
+        padding: 15px;
+        border-radius: 4px;
+        font-family: "Courier New", monospace;
+        overflow-x: auto;
+        margin: 10px 0;
+      }
+
+      .warning {
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 15px;
+        margin: 15px 0;
+      }
+
+      .success {
+        background: #d4edda;
+        border-left: 4px solid #28a745;
+        padding: 15px;
+        margin: 15px 0;
+      }
+
+      /* Examples using ID selector (#) */
+      #header {
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        border-radius: 5px;
+      }
+
+      #unique-button {
+        background-color: #ff6b6b;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      #unique-button:hover {
+        background-color: #ff5252;
+      }
+
+      #sidebar {
+        background-color: #e9ecef;
+        padding: 15px;
+        border-radius: 5px;
+        margin: 10px 0;
+      }
+
+      /* Examples using class selector (.) */
+      .highlight {
+        background-color: yellow;
+        padding: 2px 5px;
+        font-weight: bold;
+      }
+
+      .card {
+        border: 1px solid #ddd;
+        padding: 15px;
+        margin: 10px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .card:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .button {
+        padding: 10px 15px;
+        margin: 5px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .button-primary {
+        background-color: #007acc;
+        color: white;
+      }
+
+      .button-secondary {
+        background-color: #6c757d;
+        color: white;
+      }
+
+      .button-success {
+        background-color: #28a745;
+        color: white;
+      }
+
+      .text-large {
+        font-size: 20px;
+      }
+
+      .text-bold {
+        font-weight: bold;
+      }
+
+      .text-italic {
+        font-style: italic;
+      }
+
+      .border-blue {
+        border: 2px solid #007acc;
+        padding: 10px;
+        margin: 5px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>ID vs Class: Understanding the Differences</h1>
+
+    <!-- SECTION 1: Key Differences Table -->
+    <section>
+      <h2>1. Key Differences at a Glance</h2>
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Aspect</th>
+            <th>ID Attribute</th>
+            <th>Class Attribute</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Uniqueness</strong></td>
+            <td>Must be unique (one per page)</td>
+            <td>Can be reused multiple times</td>
+          </tr>
+          <tr>
+            <td><strong>Syntax</strong></td>
+            <td><code>id="unique-name"</code></td>
+            <td><code>class="class-name"</code></td>
+          </tr>
+          <tr>
+            <td><strong>CSS Selector</strong></td>
+            <td><code>#unique-name { }</code></td>
+            <td><code>.class-name { }</code></td>
+          </tr>
+          <tr>
+            <td><strong>JavaScript</strong></td>
+            <td><code>getElementById('unique-name')</code></td>
+            <td><code>getElementsByClassName('class-name')</code></td>
+          </tr>
+          <tr>
+            <td><strong>Multiple Values</strong></td>
+            <td>No (one ID per element)</td>
+            <td>Yes (space-separated)</td>
+          </tr>
+          <tr>
+            <td><strong>CSS Specificity</strong></td>
+            <td>Higher (more specific)</td>
+            <td>Lower (less specific)</td>
+          </tr>
+          <tr>
+            <td><strong>Use Case</strong></td>
+            <td>Unique elements, anchors, JS targets</td>
+            <td>Styling groups, reusable components</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 2: ID Attribute Examples -->
+    <section>
+      <h2>2. ID Attribute - Unique Identifiers</h2>
+      <p>
+        The <code>id</code> attribute identifies a single, unique element on the
+        page. Think of it as a person's social security number - only one
+        exists.
+      </p>
+
+      <div class="example-box">
+        <h3>Example: Unique Elements</h3>
+        <div id="header">This is a unique header with id="header"</div>
+        <br />
+        <button id="unique-button">I'm a unique button</button>
+        <br /><br />
+        <div id="sidebar">
+          This sidebar has a unique ID for specific styling
+        </div>
+      </div>
+
+      <div class="code-block">
+        &lt;!-- HTML --&gt;<br />
+        &lt;div id="header"&gt;Unique Header&lt;/div&gt;<br />
+        &lt;button id="unique-button"&gt;Unique Button&lt;/button&gt;<br />
+        &lt;div id="sidebar"&gt;Sidebar&lt;/div&gt;<br /><br />
+        &lt;!-- CSS --&gt;<br />
+        #header { background-color: #333; color: white; }<br />
+        #unique-button { background-color: #ff6b6b; }<br />
+        #sidebar { background-color: #e9ecef; }
+      </div>
+
+      <div class="warning">
+        <strong>⚠️ Warning:</strong> Never use the same ID twice on the same
+        page! This is invalid HTML and can cause unexpected behavior.
+      </div>
+
+      <div class="example-box">
+        <h3>❌ WRONG - Duplicate IDs:</h3>
+        <div class="code-block">
+          &lt;div id="box"&gt;First box&lt;/div&gt;<br />
+          &lt;div id="box"&gt;Second box&lt;/div&gt; &lt;!-- WRONG! --&gt;
+        </div>
+
+        <h3>✓ CORRECT - Use classes for multiple elements:</h3>
+        <div class="code-block">
+          &lt;div class="box"&gt;First box&lt;/div&gt;<br />
+          &lt;div class="box"&gt;Second box&lt;/div&gt; &lt;!-- Correct! --&gt;
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Class Attribute Examples -->
+    <section>
+      <h2>3. Class Attribute - Reusable Styles</h2>
+      <p>
+        The <code>class</code> attribute can be applied to multiple elements.
+        Use it for styling groups of elements that share common characteristics.
+      </p>
+
+      <div class="example-box">
+        <h3>Example: Multiple Elements with Same Class</h3>
+        <p>
+          This is a paragraph with
+          <span class="highlight">highlighted text</span> that appears
+          <span class="highlight">multiple times</span> using the same
+          <span class="highlight">class name</span>.
+        </p>
+
+        <div class="card">
+          <h4>Card 1</h4>
+          <p>This is the first card with class="card"</p>
+        </div>
+
+        <div class="card">
+          <h4>Card 2</h4>
+          <p>This is the second card with the same class</p>
+        </div>
+
+        <div class="card">
+          <h4>Card 3</h4>
+          <p>This is the third card with the same class</p>
+        </div>
+      </div>
+
+      <div class="code-block">
+        &lt;!-- HTML --&gt;<br />
+        &lt;span class="highlight"&gt;Text 1&lt;/span&gt;<br />
+        &lt;span class="highlight"&gt;Text 2&lt;/span&gt;<br />
+        &lt;span class="highlight"&gt;Text 3&lt;/span&gt;<br /><br />
+        &lt;!-- CSS --&gt;<br />
+        .highlight {<br />
+        &nbsp;&nbsp;background-color: yellow;<br />
+        &nbsp;&nbsp;padding: 2px 5px;<br />
+        }
+      </div>
+    </section>
+
+    <!-- SECTION 4: Multiple Classes -->
+    <section>
+      <h2>4. Multiple Classes on One Element</h2>
+      <p>
+        An element can have multiple classes separated by spaces. This allows
+        you to combine different styles.
+      </p>
+
+      <div class="example-box">
+        <h3>Example: Combining Multiple Classes</h3>
+        <p class="text-large text-bold">Large and bold text</p>
+        <p class="text-large text-italic">Large and italic text</p>
+        <p class="text-bold text-italic">Bold and italic text</p>
+        <p class="text-large text-bold text-italic border-blue">
+          All three styles plus a blue border!
+        </p>
+
+        <div style="margin-top: 20px">
+          <button class="button button-primary">Primary Button</button>
+          <button class="button button-secondary">Secondary Button</button>
+          <button class="button button-success">Success Button</button>
+        </div>
+      </div>
+
+      <div class="code-block">
+        &lt;!-- Multiple classes separated by spaces --&gt;<br />
+        &lt;p class="text-large text-bold"&gt;Text&lt;/p&gt;<br />
+        &lt;p class="text-large text-bold text-italic"&gt;Text&lt;/p&gt;<br />
+        &lt;button class="button button-primary"&gt;Button&lt;/button&gt;<br /><br />
+        &lt;!-- CSS --&gt;<br />
+        .text-large { font-size: 20px; }<br />
+        .text-bold { font-weight: bold; }<br />
+        .text-italic { font-style: italic; }<br />
+        .button { padding: 10px 15px; }<br />
+        .button-primary { background-color: #007acc; }
+      </div>
+    </section>
+
+    <!-- SECTION 5: ID and Class Together -->
+    <section>
+      <h2>5. Using ID and Class Together</h2>
+      <p>
+        An element can have both an <code>id</code> and one or more
+        <code>class</code> attributes at the same time.
+      </p>
+
+      <div class="example-box">
+        <div id="main-content" class="card border-blue">
+          <h3>Main Content Section</h3>
+          <p>
+            This div has both id="main-content" (unique identifier) and
+            class="card border-blue" (shared styles).
+          </p>
+        </div>
+      </div>
+
+      <div class="code-block">
+        &lt;div id="main-content" class="card border-blue"&gt;<br />
+        &nbsp;&nbsp;&lt;h3&gt;Main Content&lt;/h3&gt;<br />
+        &nbsp;&nbsp;&lt;p&gt;Content here...&lt;/p&gt;<br />
+        &lt;/div&gt;<br /><br />
+        &lt;!-- CSS --&gt;<br />
+        #main-content { /* Unique styles */ }<br />
+        .card { /* Shared with other cards */ }<br />
+        .border-blue { /* Shared border style */ }
+      </div>
+    </section>
+
+    <!-- SECTION 6: CSS Specificity -->
+    <section>
+      <h2>6. CSS Specificity - ID vs Class</h2>
+      <p>
+        When styles conflict, <strong>ID selectors have higher priority</strong>
+        than class selectors.
+      </p>
+
+      <div class="example-box">
+        <h3>Example: ID Overrides Class</h3>
+        <style>
+          .blue-text {
+            color: blue;
+            font-size: 18px;
+          }
+          #red-text {
+            color: red; /* This will win! */
+          }
+        </style>
+        <p id="red-text" class="blue-text">
+          What color is this text? RED! (ID wins over class)
+        </p>
+      </div>
+
+      <div class="code-block">
+        &lt;!-- CSS --&gt;<br />
+        .blue-text { color: blue; } /* Specificity: 10 */<br />
+        #red-text { color: red; } /* Specificity: 100 */<br /><br />
+        &lt;!-- HTML --&gt;<br />
+        &lt;p id="red-text" class="blue-text"&gt;<br />
+        &nbsp;&nbsp;This text will be RED (ID wins)<br />
+        &lt;/p&gt;
+      </div>
+
+      <div class="success">
+        <strong>Specificity Hierarchy (from lowest to highest):</strong>
+        <ol>
+          <li>Element selectors: <code>p { }</code> → 1 point</li>
+          <li>Class selectors: <code>.class { }</code> → 10 points</li>
+          <li>ID selectors: <code>#id { }</code> → 100 points</li>
+          <li>Inline styles: <code>style=""</code> → 1000 points</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- SECTION 7: When to Use ID vs Class -->
+    <section>
+      <h2>7. When to Use ID vs Class</h2>
+
+      <div class="example-box">
+        <h3>Use ID when:</h3>
+        <ul>
+          <li>
+            ✓ The element is unique on the page (header, footer, main
+            navigation)
+          </li>
+          <li>
+            ✓ You need to link to a specific section with anchor links
+            (<code>#section</code>)
+          </li>
+          <li>✓ JavaScript needs to target a specific unique element</li>
+          <li>✓ You want high specificity for CSS</li>
+        </ul>
+
+        <h3>Use Class when:</h3>
+        <ul>
+          <li>✓ Multiple elements share the same style</li>
+          <li>✓ You want reusable, modular CSS</li>
+          <li>✓ Building components (buttons, cards, alerts)</li>
+          <li>✓ You need to combine multiple styles</li>
+          <li>✓ Working with JavaScript to select multiple elements</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECTION 8: Practical Examples -->
+    <section>
+      <h2>8. Practical Real-World Examples</h2>
+
+      <div class="example-box">
+        <h3>Example: Page Layout</h3>
+        <div class="code-block">
+          &lt;!-- Unique structural elements use ID --&gt;<br />
+          &lt;header id="main-header"&gt;...&lt;/header&gt;<br />
+          &lt;nav id="main-nav"&gt;...&lt;/nav&gt;<br />
+          &lt;main id="content"&gt;<br />
+          &nbsp;&nbsp;&lt;!-- Reusable components use class --&gt;<br />
+          &nbsp;&nbsp;&lt;article class="post"&gt;...&lt;/article&gt;<br />
+          &nbsp;&nbsp;&lt;article class="post"&gt;...&lt;/article&gt;<br />
+          &nbsp;&nbsp;&lt;article class="post"&gt;...&lt;/article&gt;<br />
+          &lt;/main&gt;<br />
+          &lt;aside id="sidebar"&gt;...&lt;/aside&gt;<br />
+          &lt;footer id="main-footer"&gt;...&lt;/footer&gt;
+        </div>
+      </div>
+
+      <div class="example-box">
+        <h3>Example: Buttons</h3>
+        <div class="code-block">
+          &lt;!-- Base button class + modifier classes --&gt;<br />
+          &lt;button class="btn"&gt;Default&lt;/button&gt;<br />
+          &lt;button class="btn btn-primary"&gt;Primary&lt;/button&gt;<br />
+          &lt;button class="btn btn-danger"&gt;Delete&lt;/button&gt;<br />
+          &lt;button class="btn btn-large"&gt;Large Button&lt;/button&gt;<br /><br />
+          &lt;!-- One special unique button --&gt;<br />
+          &lt;button id="submit-form" class="btn btn-primary"&gt;<br />
+          &nbsp;&nbsp;Submit Form<br />
+          &lt;/button&gt;
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9: JavaScript Usage -->
+    <section>
+      <h2>9. JavaScript: Accessing Elements</h2>
+
+      <div class="example-box">
+        <h3>Using ID in JavaScript</h3>
+        <div class="code-block">
+          // Get single element by ID<br />
+          const header = document.getElementById('main-header');<br />
+          const button = document.querySelector('#unique-button');<br /><br />
+          // Modify the element<br />
+          header.textContent = 'New Header Text';
+        </div>
+
+        <h3>Using Class in JavaScript</h3>
+        <div class="code-block">
+          // Get all elements with class (returns HTMLCollection)<br />
+          const cards = document.getElementsByClassName('card');<br /><br />
+          // Or use querySelectorAll (returns NodeList)<br />
+          const cards2 = document.querySelectorAll('.card');<br /><br />
+          // Loop through and modify<br />
+          cards.forEach(card => {<br />
+          &nbsp;&nbsp;card.style.backgroundColor = 'lightblue';<br />
+          });
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 10: Best Practices -->
+    <section>
+      <h2>10. Best Practices & Common Mistakes</h2>
+
+      <div class="success">
+        <h3>✓ DO:</h3>
+        <ul>
+          <li>Use classes for styling and reusable components</li>
+          <li>Use IDs for unique page elements and JavaScript targets</li>
+          <li>Use kebab-case naming: <code>class="main-nav"</code></li>
+          <li>Keep names descriptive: <code>id="user-profile-card"</code></li>
+          <li>Combine multiple classes for modular styling</li>
+        </ul>
+      </div>
+
+      <div class="warning">
+        <h3>✗ DON'T:</h3>
+        <ul>
+          <li>Don't use the same ID multiple times on a page</li>
+          <li>Don't overuse IDs for styling (prefer classes)</li>
+          <li>Don't use spaces in names: <code>id="my page"</code> ❌</li>
+          <li>
+            Don't start names with numbers: <code>class="1st-item"</code> ❌
+          </li>
+          <li>
+            Don't rely heavily on ID specificity (makes CSS hard to override)
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECTION 11: Summary -->
+    <section>
+      <h2>11. Quick Summary</h2>
+      <div
+        class="example-box"
+        style="background: #e3f2fd; border-color: #2196f3"
+      >
+        <h3>ID Attribute:</h3>
+        <ul>
+          <li><strong>Unique</strong> - only one per page</li>
+          <li><strong>Selector:</strong> <code>#id-name</code></li>
+          <li>
+            <strong>Use for:</strong> unique elements, anchors, JS targets
+          </li>
+          <li><strong>Higher CSS specificity</strong></li>
+        </ul>
+
+        <h3>Class Attribute:</h3>
+        <ul>
+          <li><strong>Reusable</strong> - multiple elements can share</li>
+          <li><strong>Selector:</strong> <code>.class-name</code></li>
+          <li><strong>Use for:</strong> styling, components, groups</li>
+          <li><strong>Can combine multiple classes</strong></li>
+          <li><strong>Lower CSS specificity</strong></li>
+        </ul>
+
+        <h3>General Rule:</h3>
+        <p style="font-size: 18px; font-weight: bold; margin-top: 15px">
+          🎯 Use <span class="highlight">classes</span> for styling,
+          <span class="highlight">IDs</span> for identification!
+        </p>
+      </div>
+    </section>
+  </body>
+</html>
