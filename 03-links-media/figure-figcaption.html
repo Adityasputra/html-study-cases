@@ -5,52 +5,367 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Figure and figcaption</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bangers&family=Poppins:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
       body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f5f5f5;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(
+          135deg,
+          #1a1a2e 0%,
+          #16213e 50%,
+          #0f3460 100%
+        );
         display: flex;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
         margin: 0;
+        padding: 20px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* Animated background particles */
+      body::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(
+            circle at 20% 80%,
+            rgba(120, 200, 120, 0.15) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(120, 200, 120, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 40% 40%,
+            rgba(78, 205, 196, 0.08) 0%,
+            transparent 30%
+          );
+        animation: pulse 8s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 0.5;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.05);
+        }
+      }
+
+      /* Floating orbs */
+      .orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(1px);
+        animation: float 6s ease-in-out infinite;
+        pointer-events: none;
+      }
+
+      .orb:nth-child(1) {
+        width: 80px;
+        height: 80px;
+        background: radial-gradient(
+          circle,
+          rgba(120, 200, 120, 0.4),
+          transparent
+        );
+        top: 10%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+
+      .orb:nth-child(2) {
+        width: 120px;
+        height: 120px;
+        background: radial-gradient(
+          circle,
+          rgba(78, 205, 196, 0.3),
+          transparent
+        );
+        top: 70%;
+        right: 15%;
+        animation-delay: 2s;
+      }
+
+      .orb:nth-child(3) {
+        width: 60px;
+        height: 60px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 215, 0, 0.3),
+          transparent
+        );
+        bottom: 20%;
+        left: 20%;
+        animation-delay: 4s;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-20px) rotate(10deg);
+        }
       }
 
       figure {
-        background: white;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        background: linear-gradient(
+          145deg,
+          #78c878 0%,
+          #4a9f4a 50%,
+          #3d8b3d 100%
+        );
+        border-radius: 20px;
+        padding: 20px;
         margin: 0;
-        max-width: 280px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        max-width: 320px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+          0 0 0 4px rgba(255, 255, 255, 0.1),
+          inset 0 0 30px rgba(255, 255, 255, 0.1);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        z-index: 10;
+        overflow: hidden;
+      }
+
+      /* Holographic shine effect */
+      figure::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: left 0.5s ease;
+        z-index: 100;
+        pointer-events: none;
+      }
+
+      figure:hover::before {
+        left: 100%;
+      }
+
+      /* Inner border */
+      figure::after {
+        content: "";
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 14px;
+        pointer-events: none;
       }
 
       figure:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        transform: translateY(-12px) rotateX(5deg);
+        box-shadow: 0 30px 80px rgba(120, 200, 120, 0.4),
+          0 0 0 4px rgba(255, 255, 255, 0.2), 0 0 40px rgba(120, 200, 120, 0.3),
+          inset 0 0 30px rgba(255, 255, 255, 0.15);
+      }
+
+      /* Type badge */
+      .type-badge {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        background: linear-gradient(135deg, #78c878, #4caf50);
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        z-index: 20;
+      }
+
+      /* Pokemon number */
+      .pokemon-number {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 14px;
+        font-weight: 700;
+        z-index: 20;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .img-container {
+        background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+        border-radius: 12px;
+        padding: 15px;
+        margin-top: 25px;
+        position: relative;
+        box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1),
+          0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Decorative circles in background */
+      .img-container::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 85%;
+        height: 85%;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.8) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
       }
 
       img {
         width: 100%;
         height: auto;
         display: block;
+        border-radius: 8px;
+        position: relative;
+        z-index: 5;
+        filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
+        transition: transform 0.3s ease, filter 0.3s ease;
+      }
+
+      figure:hover img {
+        transform: scale(1.05);
+        filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.3));
       }
 
       figcaption {
-        padding: 16px;
-        font-size: 15px;
-        color: #333;
-        font-weight: 500;
-        letter-spacing: 0.3px;
+        margin-top: 15px;
+        padding: 14px 20px;
+        font-family: "Bangers", cursive;
+        font-size: 28px;
+        color: #fff;
         text-align: center;
+        background: linear-gradient(135deg, #2d5a2d 0%, #1e3d1e 100%);
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+        position: relative;
+        overflow: hidden;
+      }
+
+      figcaption::before {
+        content: "🌿";
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 18px;
+      }
+
+      figcaption::after {
+        content: "🌿";
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 18px;
+      }
+
+      /* Stats bar */
+      .stats {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 12px;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+      }
+
+      .stat {
+        text-align: center;
+        color: white;
+      }
+
+      .stat-label {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        opacity: 0.8;
+      }
+
+      .stat-value {
+        font-size: 18px;
+        font-weight: 700;
+        margin-top: 2px;
       }
     </style>
   </head>
   <body>
+    <!-- Floating orbs for atmosphere -->
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+
     <figure>
-      <img src="/resources/pokemon.png" alt="Pokemon Image" width="200" />
-      <figcaption>Pokemon Image</figcaption>
+      <span class="pokemon-number">#001</span>
+      <span class="type-badge">Grass</span>
+      <div class="img-container">
+        <img
+          src="/resources/pokemon.png"
+          alt="Bulbasaur - Seed Pokemon"
+          width="200"
+        />
+      </div>
+      <figcaption>Bulbasaur</figcaption>
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-label">HP</div>
+          <div class="stat-value">45</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">ATK</div>
+          <div class="stat-value">49</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">DEF</div>
+          <div class="stat-value">49</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">SPD</div>
+          <div class="stat-value">45</div>
+        </div>
+      </div>
     </figure>
   </body>
 </html>
