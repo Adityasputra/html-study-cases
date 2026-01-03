@@ -1,1 +1,25 @@
 <!-- Practice: Anchor element and internal page linking -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Internal Link</title>
+  </head>
+  <body>
+    <main>
+      <h1 id="top">Internal Links Demo</h1>
+      <p>
+        This is an example of an internal link. Click the link below to jump to
+        the "Section 1" heading.
+      </p>
+      <a href="#section1">Go to Section 1</a>
+
+      <section style="margin-top: 1000px">
+        <h2 id="section1">Section 1</h2>
+        <p>You have jumped to Section 1!</p>
+        <a href="#top">Back to Top</a>
+      </section>
+    </main>
+  </body>
+</html>
