@@ -1,1 +1,40 @@
 <!-- Practice: Div and span - when to use generic containers -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Div and Span Practice</title>
+    <style>
+        .container {
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin: 10px 0;
+        }
+        .highlight {
+            background-color: yellow;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Understanding Div and Span</h1>
+    
+    <!-- Div: block-level container for grouping content -->
+    <div class="container">
+        <h2>Section 1: About Div</h2>
+        <p>A div is a <span class="highlight">block-level</span> element used to group larger sections of content.</p>
+    </div>
+    
+    <div class="container">
+        <h2>Section 2: About Span</h2>
+        <p>A span is an <span class="highlight">inline</span> element used to style or group small portions of text within a line.</p>
+    </div>
+    
+    <!-- Example combining both -->
+    <div class="container">
+        <h2>Section 3: Combined Example</h2>
+        <p>Use <span class="highlight">div</span> for layout and <span class="highlight">span</span> for inline styling.</p>
+    </div>
+</body>
+</html>
